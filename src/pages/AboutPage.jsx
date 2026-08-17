@@ -1,6 +1,5 @@
 import React from 'react';
 import AboutSection from '../components/AboutSection';
-import InfrastructureSection from '../components/InfrastructureSection';
 
 export default function AboutPage({ setActivePage }) {
   return (
@@ -20,7 +19,6 @@ export default function AboutPage({ setActivePage }) {
       </div>
 
       <AboutSection setActivePage={setActivePage} />
-      <InfrastructureSection />
     </div>
   );
 }

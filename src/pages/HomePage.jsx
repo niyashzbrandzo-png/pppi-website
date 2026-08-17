@@ -7,7 +7,6 @@ import LeadershipSection from '../components/LeadershipSection';
 import WhyChooseSection from '../components/WhyChooseSection';
 import MobileAppSection from '../components/MobileAppSection';
 import AdminPortalSection from '../components/AdminPortalSection';
-import InfrastructureSection from '../components/InfrastructureSection';
 import MembershipPlans from '../components/MembershipPlans';
 import ManifestoSection from '../components/ManifestoSection';
 import EventsSection from '../components/EventsSection';
@@ -34,7 +33,6 @@ export default function HomePage({
       <WhyChooseSection />
       <MobileAppSection />
       <AdminPortalSection />
-      <InfrastructureSection />
       <MembershipPlans openMembershipModal={openMembershipModal} />
       <ManifestoSection setActivePage={setActivePage} />
       <EventsSection openEventModal={openEventModal} />
