@@ -1195,10 +1195,49 @@ button {
   gap: 0.75rem;
 }
 
-/* Responsive Media Queries */
-@media (max-width: 992px) {
+/* Utility Grid Classes for Forms & Cards */
+.form-row-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.about-founded-badge {
+  position: absolute;
+  bottom: -1.5rem;
+  right: -1.5rem;
+  background: var(--color-navy);
+  color: #FFFFFF;
+  padding: 1.5rem 2rem;
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-lg);
+  z-index: 5;
+}
+
+.app-qr-floating-badge {
+  position: absolute;
+  top: 2rem;
+  right: -2rem;
+  background: #FFFFFF;
+  padding: 1rem 1.25rem;
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  z-index: 5;
+}
+
+/* ==========================================================================
+   Responsive Media Queries (Mobile & Tablet Optimization)
+   ========================================================================== */
+
+/* 1. Tablet Viewports (max-width: 1024px) */
+@media (max-width: 1024px) {
   .hero-grid, .grid-2col, .founder-grid, .contact-grid {
     grid-template-columns: 1fr;
+    gap: 2.5rem;
   }
   .nav-menu, .nav-actions {
     display: none;
@@ -1209,19 +1248,267 @@ button {
   .hero-headline {
     font-size: 2.75rem;
   }
+  .cards-grid-3, .features-grid-3, .pricing-grid, .manifesto-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
   .footer-grid {
     grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+  .about-founded-badge {
+    right: 0.5rem;
+    bottom: 0.5rem;
+    padding: 1rem 1.25rem;
+  }
+  .app-qr-floating-badge {
+    right: 0.5rem;
+    top: 1rem;
+    padding: 0.75rem 1rem;
+  }
+  .mockup-container {
+    text-align: center;
   }
 }
 
-@media (max-width: 640px) {
+/* 2. Tablet Small & Wide Mobile Viewports (max-width: 768px) */
+@media (max-width: 768px) {
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  .container {
+    padding: 0 1.25rem;
+  }
+
+  .section-padding {
+    padding: 3.5rem 0;
+  }
+
+  .section-header {
+    margin-bottom: 2.25rem;
+  }
+
+  .section-title {
+    font-size: 2.1rem;
+  }
+
+  .brand-title {
+    font-size: 1.1rem;
+  }
+
+  .brand-subtitle {
+    font-size: 0.65rem;
+  }
+
+  .brand-emblem {
+    width: 38px;
+    height: 38px;
+    font-size: 1.2rem;
+  }
+
+  .navbar {
+    padding: 0.85rem 0;
+  }
+
+  .mobile-drawer {
+    top: 62px;
+    max-height: calc(100vh - 62px);
+    overflow-y: auto;
+    padding: 1.25rem;
+  }
+
+  .hero-wrapper {
+    padding-top: 6.5rem;
+    padding-bottom: 3.5rem;
+  }
+
   .hero-headline {
     font-size: 2.2rem;
   }
-  .section-title {
-    font-size: 2rem;
+
+  .hero-subheading {
+    font-size: 1.05rem;
+    margin-bottom: 1.75rem;
   }
-  .footer-grid {
-    grid-template-columns: 1fr;
+
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.75rem;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .hero-image-card img {
+    height: 280px;
+  }
+
+  .hero-badge-overlay {
+    position: relative;
+    inset: auto;
+    margin: 12px;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 0.85rem 1rem;
+  }
+
+  .pricing-card.popular {
+    transform: none !important;
+    margin: 0;
+    box-shadow: var(--shadow-md);
+  }
+
+  .pricing-card {
+    padding: 1.75rem 1.25rem;
+  }
+
+  .modal-backdrop {
+    padding: 1rem;
+  }
+
+  .modal-content {
+    padding: 1.75rem 1.25rem;
+    max-width: 95vw;
+    max-height: 88vh;
+  }
+
+  .floating-actions {
+    bottom: 1.25rem;
+    right: 1.25rem;
+    gap: 0.5rem;
+  }
+
+  .fab-btn {
+    width: 44px;
+    height: 44px;
+    font-size: 1.1rem;
+  }
+
+  .toast-container {
+    left: 1rem;
+    right: 1rem;
+    bottom: 1.25rem;
+    width: auto;
   }
 }
+
+/* 3. Mobile Portrait Viewports (max-width: 640px) */
+@media (max-width: 640px) {
+  .form-row-2col {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+
+  .cards-grid-3, .features-grid-3, .pricing-grid, .manifesto-grid, .gallery-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .founder-content {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .founder-image-wrap img {
+    min-height: auto;
+    max-height: 320px;
+  }
+
+  .founder-timeline {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .contact-info-card {
+    padding: 1.75rem 1.25rem;
+  }
+
+  .values-grid {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .stat-card {
+    padding: 1rem 0.5rem;
+  }
+
+  .stat-number {
+    font-size: 2.2rem;
+  }
+
+  .stat-label {
+    font-size: 0.78rem;
+  }
+
+  .modal-content {
+    padding: 1.35rem 1rem;
+    border-radius: var(--border-radius-md);
+  }
+}
+
+/* 4. Small Compact Mobile Phones (max-width: 480px) */
+@media (max-width: 480px) {
+  .hero-headline {
+    font-size: 1.85rem;
+  }
+
+  .section-title {
+    font-size: 1.7rem;
+  }
+
+  .brand-subtitle {
+    font-size: 0.6rem;
+    letter-spacing: 0.04em;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .filter-tabs {
+    gap: 0.4rem;
+  }
+
+  .filter-btn {
+    padding: 0.35rem 0.75rem;
+    font-size: 0.8rem;
+  }
+
+  .about-founded-badge {
+    position: relative;
+    inset: auto;
+    margin-top: 1rem;
+    width: 100%;
+    text-align: center;
+  }
+
+  .app-qr-floating-badge {
+    position: relative;
+    inset: auto;
+    margin-top: 1rem;
+    width: 100%;
+    justify-content: center;
+  }
+}
+

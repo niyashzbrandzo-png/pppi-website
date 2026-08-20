@@ -27,7 +27,7 @@ export default function MobileAppSection() {
               />
 
               {/* Floating Badge Overlay */}
-              <div style={{ position: 'absolute', top: '2rem', right: '-2rem', background: '#FFFFFF', padding: '1rem 1.25rem', borderRadius: 'var(--border-radius-md)', boxShadow: 'var(--shadow-lg)', border: '1px solid var(--border-color)', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+              <div className="app-qr-floating-badge">
                 <i className="fa-solid fa-qrcode" style={{ fontSize: '2rem', color: 'var(--color-royal-blue)' }}></i>
                 <div>
                   <div style={{ fontWeight: 800, fontSize: '0.9rem' }}>Digital ID Pass</div>
@@ -53,7 +53,7 @@ export default function MobileAppSection() {
             </p>
 
             {/* Checklist of App Features */}
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.85rem', marginBottom: '2.5rem' }}>
+            <div className="form-row-2col" style={{ gap: '0.85rem', marginBottom: '2.5rem' }}>
               {appFeatures.map((feat, i) => (
                 <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.6rem', fontSize: '0.88rem', color: 'var(--text-primary)' }}>
                   <i className="fa-solid fa-circle-check" style={{ color: 'var(--color-green-dark)', marginTop: '0.2rem' }}></i>

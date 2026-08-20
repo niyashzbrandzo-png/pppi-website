@@ -29,7 +29,7 @@ export default function AdminPortalSection() {
               The PPPI Admin Portal gives national executive leaders and district coordinators an enterprise-grade web suite to manage thousands of members with ironclad data security.
             </p>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.25rem' }}>
+            <div className="form-row-2col">
               {adminCapabilities.map((item, i) => (
                 <div key={i} style={{ background: 'var(--bg-secondary)', padding: '1rem 1.25rem', borderRadius: 'var(--border-radius-md)', border: '1px solid var(--border-color)' }}>
                   <div style={{ color: 'var(--color-royal-blue)', fontSize: '1.2rem', marginBottom: '0.4rem' }}>

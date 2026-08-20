@@ -22,7 +22,7 @@ export default function AboutSection({ setActivePage }) {
               className="image-rounded-shadow"
               style={{ maxHeight: '560px' }}
             />
-            <div style={{ position: 'absolute', bottom: '-1.5rem', right: '-1.5rem', background: 'var(--color-navy)', color: '#FFFFFF', padding: '1.5rem 2rem', borderRadius: 'var(--border-radius-md)', boxShadow: 'var(--shadow-lg)' }}>
+            <div className="about-founded-badge">
               <div style={{ fontFamily: 'var(--font-display)', fontSize: '2rem', fontWeight: '800', color: 'var(--color-saffron)' }}>2024</div>
               <div style={{ fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Founded for Modern India</div>
             </div>
@@ -43,7 +43,7 @@ export default function AboutSection({ setActivePage }) {
               Pasha People Party of India (PPPI) was established with a bold mission: to bridge the gap between Indian citizens and political governance through modern digital technology, unyielding transparency, and inclusive social development.
             </p>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.25rem', marginBottom: '2rem' }}>
+            <div className="form-row-2col" style={{ marginBottom: '2rem' }}>
               <div style={{ background: '#FFFFFF', padding: '1.25rem', borderRadius: 'var(--border-radius-md)', border: '1px solid var(--border-color)' }}>
                 <h4 style={{ color: 'var(--color-royal-blue)', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                   <i className="fa-solid fa-bullseye" style={{ color: 'var(--color-saffron-dark)' }}></i> Our Mission
