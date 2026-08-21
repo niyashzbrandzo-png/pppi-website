@@ -1,14 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { galleryData } from '../data/websiteData';
+import { apiService } from '../services/api';
 
 export default function GallerySection({ openLightbox }) {
   const [activeCategory, setActiveCategory] = useState('All');
+  const [galleryItems, setGalleryItems] = useState(galleryData);
 
-  const categories = ['All', 'Political Events', 'Community Service', 'Meetings', 'Volunteers', 'Campaigns'];
+  useEffect(() => {
+    async function loadLiveGallery() {
+      try {
+        const res = await apiService.fetchGallery();
+        const apiData = Array.isArray(res.data) ? res.data : (Array.isArray(res) ? res : []);
+        if (apiData.length > 0) {
+          const formatted = apiData.map(item => ({
+            id: item.id,
+            title: item.title,
+            category: item.category || 'Events',
+            image: item.image_url,
+            description: item.description
+          }));
+          setGalleryItems(formatted);
+        }
+      } catch (err) {
+        console.warn('Failed to load gallery from API:', err);
+      }
+    }
+    loadLiveGallery();
+  }, []);
+
+  const categories = ['All', 'Events', 'Political Events', 'Community Service', 'Meetings', 'Volunteers', 'Campaigns'];
 
   const filteredGallery = activeCategory === 'All'
-    ? galleryData
-    : galleryData.filter((item) => item.category === activeCategory);
+    ? galleryItems
+    : galleryItems.filter((item) => item.category.toLowerCase() === activeCategory.toLowerCase());
 
   return (
     <section className="section-padding" id="gallery">

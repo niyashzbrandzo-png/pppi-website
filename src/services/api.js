@@ -81,6 +81,21 @@ export const apiService = {
     });
   },
 
+  // Manifesto
+  fetchManifesto: async () => {
+    return request('/manifesto', { method: 'GET' });
+  },
+
+  // Membership Plans
+  fetchPlans: async () => {
+    return request('/plans', { method: 'GET' });
+  },
+
+  // Funds
+  fetchFunds: async () => {
+    return request('/funds', { method: 'GET' });
+  },
+
   // Gallery
   fetchGallery: async () => {
     return request('/gallery', { method: 'GET' });

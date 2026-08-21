@@ -1,8 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { manifestoTopics } from '../data/websiteData';
+import { apiService } from '../services/api';
 
 export default function ManifestoSection({ setActivePage }) {
   const [selectedTopic, setSelectedTopic] = useState(null);
+  const [topics, setTopics] = useState(manifestoTopics);
+
+  useEffect(() => {
+    async function loadLiveManifesto() {
+      try {
+        const res = await apiService.fetchManifesto();
+        const apiData = Array.isArray(res.data) ? res.data : (Array.isArray(res) ? res : []);
+        if (apiData.length > 0) {
+          const formatted = apiData.map(item => ({
+            id: item.id,
+            icon: item.icon_name || 'fa-book-open',
+            title: item.title,
+            subtitle: item.subtitle || item.category || 'Party Charter',
+            desc: item.content || item.summary || '',
+            image: item.image_url || 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80',
+          }));
+          setTopics(formatted);
+        }
+      } catch (err) {
+        console.warn('Failed to load manifesto from API, using default topics:', err);
+      }
+    }
+    loadLiveManifesto();
+  }, []);
 
   return (
     <section className="section-padding" id="manifesto" style={{ backgroundColor: 'var(--bg-secondary)' }}>
@@ -13,15 +38,15 @@ export default function ManifestoSection({ setActivePage }) {
             <span>PARTY MANIFESTO 2026</span>
           </div>
           <h2 className="section-title">
-            10 Pillars of <span className="gradient-text">Peace, Prosperity & Power</span>
+            Key Pillars of <span className="gradient-text">Peace, Prosperity & Power</span>
           </h2>
           <p className="section-subtitle">
-            Our comprehensive, actionable policy blueprint for transforming Indian governance and public welfare.
+            Our comprehensive, actionable policy blueprint managed directly by the National Executive Committee.
           </p>
         </div>
 
         <div className="manifesto-grid">
-          {manifestoTopics.map((topic) => (
+          {topics.map((topic) => (
             <div key={topic.id} className="manifesto-card">
               <img src={topic.image} alt={topic.title} />
               <div className="manifesto-body">

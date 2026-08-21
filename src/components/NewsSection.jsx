@@ -1,8 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { newsData } from '../data/websiteData';
+import { apiService } from '../services/api';
 
 export default function NewsSection({ setActivePage }) {
   const [selectedNews, setSelectedNews] = useState(null);
+  const [newsList, setNewsList] = useState(newsData);
+
+  useEffect(() => {
+    async function loadLiveNews() {
+      try {
+        const res = await apiService.fetchNews();
+        const apiPosts = Array.isArray(res.data) ? res.data : (Array.isArray(res) ? res : []);
+        if (apiPosts.length > 0) {
+          const formatted = apiPosts.map(post => ({
+            id: post.id,
+            title: post.user?.name ? `Update from ${post.user.name}` : 'Official PPPI Announcement',
+            category: 'Press Release',
+            date: post.created_at ? new Date(post.created_at).toLocaleDateString() : 'Recent',
+            author: post.user?.name || 'PPPI Press Bureau',
+            image: (post.images && post.images.length > 0) ? post.images[0].image_url : 'https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=800&q=80',
+            summary: post.description || 'Latest political announcement from Pasha People Party of India.'
+          }));
+          setNewsList(formatted);
+        }
+      } catch (err) {
+        console.warn('Failed to load news from API:', err);
+      }
+    }
+    loadLiveNews();
+  }, []);
 
   return (
     <section className="section-padding" id="news" style={{ backgroundColor: 'var(--bg-secondary)' }}>
@@ -21,7 +47,7 @@ export default function NewsSection({ setActivePage }) {
         </div>
 
         <div className="cards-grid-3">
-          {newsData.map((item) => (
+          {newsList.map((item) => (
             <div key={item.id} className="news-card">
               <img src={item.image} alt={item.title} style={{ height: '220px', width: '100%', objectFit: 'cover' }} />
               <div style={{ padding: '1.5rem' }}>

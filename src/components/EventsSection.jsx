@@ -4,39 +4,32 @@ import { apiService } from '../services/api';
 
 export default function EventsSection({ openEventModal }) {
   const [filter, setFilter] = useState('All');
-  const [eventsList, setEventsList] = useState(eventsData);
+  const [eventsList, setEventsList] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function loadLiveEvents() {
       try {
+        setLoading(true);
         const res = await apiService.fetchEvents();
         const apiEvents = Array.isArray(res.data) ? res.data : (Array.isArray(res) ? res : []);
-        if (apiEvents.length > 0) {
-          const formattedApiEvents = apiEvents.map((evt) => ({
-            id: evt.id || `api-${Date.now()}`,
-            title: evt.title,
-            category: 'Upcoming',
-            type: evt.organizer || 'Admin Special Event',
-            date: evt.date,
-            time: evt.time || '10:00 AM',
-            venue: evt.venue,
-            image: evt.banner_image || evt.banner || 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80',
-            desc: evt.description || 'Official PPPI event created by Admin Executive Committee.',
-          }));
+        const formattedApiEvents = apiEvents.map((evt) => ({
+          id: evt.id || `api-${Date.now()}`,
+          title: evt.title,
+          category: 'Upcoming',
+          type: evt.organizer || 'Admin Special Event',
+          date: evt.date,
+          time: evt.time || '10:00 AM',
+          venue: evt.venue,
+          image: evt.banner_image || evt.banner || 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80',
+          desc: evt.description || 'Official PPPI event created by Admin Executive Committee.',
+        }));
 
-          // Merge live backend events with default events, prioritizing new backend events
-          setEventsList((prev) => {
-            const combined = [...formattedApiEvents];
-            prev.forEach((item) => {
-              if (!combined.some((c) => c.title.toLowerCase() === item.title.toLowerCase())) {
-                combined.push(item);
-              }
-            });
-            return combined;
-          });
-        }
+        setEventsList(formattedApiEvents);
       } catch (err) {
-        console.warn('Could not load live events from API, displaying default list:', err);
+        console.warn('Could not load live events from API:', err);
+      } finally {
+        setLoading(false);
       }
     }
     loadLiveEvents();

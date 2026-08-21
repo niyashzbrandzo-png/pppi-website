@@ -1,7 +1,36 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { membershipPlans } from '../data/websiteData';
+import { apiService } from '../services/api';
 
 export default function MembershipPlans({ openMembershipModal }) {
+  const [plans, setPlans] = useState(membershipPlans);
+
+  useEffect(() => {
+    async function loadLivePlans() {
+      try {
+        const res = await apiService.fetchPlans();
+        const apiData = Array.isArray(res.data) ? res.data : (Array.isArray(res) ? res : []);
+        if (apiData.length > 0) {
+          const formatted = apiData.map(plan => ({
+            id: plan.id,
+            name: plan.plan_name,
+            price: Number(plan.price) === 0 || plan.is_free ? '₹0' : `₹${plan.price}`,
+            period: 'per year',
+            popular: plan.is_popular || false,
+            color: plan.is_popular ? '#D97706' : '#0284C7',
+            features: Array.isArray(plan.plan_benefits)
+              ? plan.plan_benefits.map(b => b.benefit)
+              : ['Digital Membership Card', 'Community Forum Access', 'Party News Updates']
+          }));
+          setPlans(formatted);
+        }
+      } catch (err) {
+        console.warn('Failed to load plans from API:', err);
+      }
+    }
+    loadLivePlans();
+  }, []);
+
   return (
     <section className="section-padding" id="membership">
       <div className="container">
@@ -19,7 +48,7 @@ export default function MembershipPlans({ openMembershipModal }) {
         </div>
 
         <div className="pricing-grid">
-          {membershipPlans.map((plan) => (
+          {plans.map((plan) => (
             <div
               key={plan.id}
               className={`pricing-card ${plan.popular ? 'popular' : ''}`}
