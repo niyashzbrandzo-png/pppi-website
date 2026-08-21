@@ -3,7 +3,7 @@
  * Endpoint URL base: https://api.pppiconnect.com/api (or local fallback)
  */
 
-const PRIMARY_API_URL = 'http://localhost:5000/api';
+const PRIMARY_API_URL = 'https://api.pppiconnect.com/api';
 const REMOTE_FALLBACK_URL = import.meta.env.VITE_API_BASE_URL || 'https://api.pppiconnect.com/api';
 
 async function request(endpoint, options = {}) {
