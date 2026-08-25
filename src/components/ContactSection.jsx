@@ -115,11 +115,11 @@ export default function ContactSection({ addToast }) {
               </div>
             </div>
 
-            {/* Google Map Embed Placeholder */}
+            {/* Google Map Embed for Hosur Headquarters */}
             <div style={{ borderRadius: 'var(--border-radius-lg)', overflow: 'hidden', height: '220px', boxShadow: 'var(--shadow-md)', border: '1px solid var(--border-color)' }}>
               <iframe
-                title="PPPI Central Secretariat Map"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14001.077242686828!2d77.2185!3d28.675!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd058a983b63%3A0xb35a397984f88417!2sCivil%20Lines%2C%20Delhi!5e0!3m2!1sen!2sin!4v1700000000000"
+                title="PPPI Central Secretariat Hosur Map"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62263.26871589139!2d77.785!3d12.7409!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae70ce18797825%3A0x6b245e31e5f8f8b0!2sHosur%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1700000000000"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}

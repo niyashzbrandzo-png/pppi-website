@@ -1,63 +1,185 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemap.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemap.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Home Page -->
   <url>
     <loc>https://pppiconnect.com/</loc>
-    <lastmod>2026-08-13</lastmod>
+    <lastmod>2026-08-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&amp;fit=crop&amp;w=1200&amp;q=80</image:loc>
+      <image:title>PPPI CONNECT Official Convention &amp; Public Gathering</image:title>
+      <image:caption>Pasha People Party of India Digital Membership Launch and National Gathering</image:caption>
+    </image:image>
   </url>
+
+  <!-- About PPPI -->
   <url>
-    <loc>https://pppiconnect.com/#about</loc>
-    <lastmod>2026-08-13</lastmod>
+    <loc>https://pppiconnect.com/about</loc>
+    <lastmod>2026-08-25</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1577495508048-b635879837f1?auto=format&amp;fit=crop&amp;w=1200&amp;q=80</image:loc>
+      <image:title>PPPI Leaders and Volunteers Convention</image:title>
+      <image:caption>About Pasha People Party of India Ideology and Vision</image:caption>
+    </image:image>
   </url>
+
+  <!-- Founder Profile -->
   <url>
-    <loc>https://pppiconnect.com/#founder</loc>
-    <lastmod>2026-08-13</lastmod>
+    <loc>https://pppiconnect.com/founder</loc>
+    <lastmod>2026-08-25</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&amp;fit=crop&amp;w=800&amp;q=80</image:loc>
+      <image:title>Dr. Pasha Pasha - Founder and National President</image:title>
+      <image:caption>Dr. Pasha Pasha leading Pasha People Party of India</image:caption>
+    </image:image>
   </url>
+
+  <!-- Leadership Directory -->
   <url>
-    <loc>https://pppiconnect.com/#leadership</loc>
-    <lastmod>2026-08-13</lastmod>
+    <loc>https://pppiconnect.com/leadership</loc>
+    <lastmod>2026-08-25</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.80</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&amp;fit=crop&amp;w=600&amp;q=80</image:loc>
+      <image:title>PPPI National Executive Committee</image:title>
+    </image:image>
   </url>
+
+  <!-- Party Manifesto -->
   <url>
-    <loc>https://pppiconnect.com/#manifesto</loc>
-    <lastmod>2026-08-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://pppiconnect.com/#membership</loc>
-    <lastmod>2026-08-13</lastmod>
+    <loc>https://pppiconnect.com/manifesto</loc>
+    <lastmod>2026-08-25</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.95</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&amp;fit=crop&amp;w=1200&amp;q=80</image:loc>
+      <image:title>PPPI Official 15-Point Policy Manifesto 2026</image:title>
+      <image:caption>15 Core Legislative Pledges of Pasha People Party of India - For Peace, Prosperity and Power</image:caption>
+    </image:image>
   </url>
+
+  <!-- Membership Plans -->
   <url>
-    <loc>https://pppiconnect.com/#events</loc>
-    <lastmod>2026-08-13</lastmod>
+    <loc>https://pppiconnect.com/membership</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&amp;fit=crop&amp;w=1200&amp;q=80</image:loc>
+      <image:title>PPPI Digital Membership Registration</image:title>
+    </image:image>
+  </url>
+
+  <!-- Mobile App -->
+  <url>
+    <loc>https://pppiconnect.com/app</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&amp;fit=crop&amp;w=1200&amp;q=80</image:loc>
+      <image:title>PPPI Connect Mobile App Interface</image:title>
+    </image:image>
+  </url>
+
+  <!-- Events & Rallies -->
+  <url>
+    <loc>https://pppiconnect.com/events</loc>
+    <lastmod>2026-08-25</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&amp;fit=crop&amp;w=1200&amp;q=80</image:loc>
+      <image:title>PPPI Public Events and Rallies</image:title>
+    </image:image>
   </url>
+
+  <!-- News & Press -->
   <url>
-    <loc>https://pppiconnect.com/#news</loc>
-    <lastmod>2026-08-13</lastmod>
+    <loc>https://pppiconnect.com/news</loc>
+    <lastmod>2026-08-25</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&amp;fit=crop&amp;w=1200&amp;q=80</image:loc>
+      <image:title>PPPI Press Releases and News</image:title>
+    </image:image>
   </url>
+
+  <!-- Gallery -->
   <url>
-    <loc>https://pppiconnect.com/#gallery</loc>
-    <lastmod>2026-08-13</lastmod>
+    <loc>https://pppiconnect.com/gallery</loc>
+    <lastmod>2026-08-25</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.80</priority>
+    <image:image>
+      <image:loc>https://pppiconnect.com/images/gallery/pppi_gallery_presidential_office.jpg</image:loc>
+      <image:title>Dr. Pasha Pasha and Leadership Team in Central Office</image:title>
+      <image:caption>Founder and National President Dr. Pasha Pasha with senior party executives and legal advisors</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://pppiconnect.com/images/gallery/pppi_gallery_stage_assembly.jpg</image:loc>
+      <image:title>Pasha People Party of India State Committee on Stage</image:title>
+      <image:caption>PPPI leaders and grassroots organizers on stage under the official banner</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://pppiconnect.com/images/gallery/pppi_gallery_registration_drive.jpg</image:loc>
+      <image:title>Women Empowerment and Grassroots Membership Drive</image:title>
+      <image:caption>Citizens completing official PPPI digital membership enrollment and register forms</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://pppiconnect.com/images/gallery/pppi_gallery_conclave_registration.jpg</image:loc>
+      <image:title>Citizen Delegate Verification and Conclave Check-in</image:title>
+      <image:caption>Delegates and coordinators checking in at the official convention desk</image:caption>
+    </image:image>
   </url>
+
+  <!-- FAQ Guide -->
   <url>
-    <loc>https://pppiconnect.com/#contact</loc>
-    <lastmod>2026-08-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://pppiconnect.com/faq</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
   </url>
+
+  <!-- Contact Us -->
+  <url>
+    <loc>https://pppiconnect.com/contact</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- Privacy Policy -->
+  <url>
+    <loc>https://pppiconnect.com/privacy</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.50</priority>
+  </url>
+
+  <!-- Terms & Conditions -->
+  <url>
+    <loc>https://pppiconnect.com/terms</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.50</priority>
+  </url>
+
+  <!-- Refund Policy -->
+  <url>
+    <loc>https://pppiconnect.com/refund</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.50</priority>
+  </url>
+
 </urlset>

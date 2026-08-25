@@ -1,20 +1,20 @@
 import React from 'react';
-import { founderData } from '../data/websiteData';
+import { founderData, siteMetadata } from '../data/websiteData';
 
 export default function FounderSection({ setActivePage }) {
   return (
-    <section className="section-padding" id="founder">
+    <section className="section-padding" id="founder" aria-label="Founder Presidential Profile and Preamble">
       <div className="container">
         <div className="section-header">
           <div className="section-badge">
-            <i className="fa-solid fa-user-tie"></i>
-            <span>FOUNDER'S LEADERSHIP</span>
+            <i className="fa-solid fa-user-tie" aria-hidden="true"></i>
+            <span>FOUNDER & NATIONAL PRESIDENT</span>
           </div>
           <h2 className="section-title">
-            Meet Our <span className="gradient-text">Founder & President</span>
+            Dr. B. Pasha's <span className="gradient-text">Vision & Preamble</span>
           </h2>
           <p className="section-subtitle">
-            Championing digital democracy, transparent governance, and grassroots empowerment across India.
+            Pioneering peace, universal brotherhood, ethical governance, and grassroots empowerment across India from Hosur, Tamil Nadu.
           </p>
         </div>
 
@@ -22,63 +22,109 @@ export default function FounderSection({ setActivePage }) {
           <div className="founder-grid">
             {/* Left Image Column */}
             <div className="founder-image-wrap">
-              <img src={founderData.portrait} alt={founderData.name} />
-              <div style={{ position: 'absolute', bottom: '1.5rem', left: '1.5rem', background: 'rgba(15, 23, 42, 0.85)', backdropFilter: 'blur(8px)', color: '#FFFFFF', padding: '0.85rem 1.25rem', borderRadius: 'var(--border-radius-sm)' }}>
-                <div style={{ fontWeight: 800, fontSize: '1.1rem', color: '#FF9933' }}>{founderData.name}</div>
-                <div style={{ fontSize: '0.8rem' }}>{founderData.designation}</div>
+              <img
+                src={founderData.portrait}
+                alt="Dr. B. Pasha (Dr. Pasha Pasha) - Founder & National President of Pasha People Party of India"
+                loading="lazy"
+                decoding="async"
+                width="800"
+                height="800"
+                style={{ objectFit: 'cover' }}
+              />
+              <div style={{ position: 'absolute', bottom: '1.5rem', left: '1.5rem', background: 'rgba(15, 23, 42, 0.9)', backdropFilter: 'blur(8px)', color: '#FFFFFF', padding: '0.85rem 1.25rem', borderRadius: 'var(--border-radius-sm)', border: '1px solid rgba(255, 153, 51, 0.4)' }}>
+                <div style={{ fontWeight: 800, fontSize: '1.15rem', color: '#FF9933' }}>{founderData.name}</div>
+                <div style={{ fontSize: '0.82rem', opacity: 0.9 }}>{founderData.designation}</div>
+                <div style={{ fontSize: '0.75rem', color: '#38BDF8', marginTop: '0.2rem' }}>Hosur, Tamil Nadu, India</div>
               </div>
             </div>
 
             {/* Right Biography Column */}
             <div className="founder-content">
               <span style={{ fontSize: '0.85rem', fontWeight: '700', color: 'var(--color-saffron-dark)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                NATIONAL EXECUTIVE ADDRESS
+                NATIONAL PRESIDENTIAL CHARTER
               </span>
 
-              <h3 style={{ fontSize: '2rem', marginTop: '0.5rem', marginBottom: '1rem', color: 'var(--color-navy)' }}>
+              <h3 style={{ fontSize: '1.85rem', marginTop: '0.5rem', marginBottom: '0.75rem', color: 'var(--color-navy)' }}>
                 {founderData.name}
               </h3>
 
-              <p style={{ color: 'var(--text-secondary)', fontSize: '0.98rem', lineHeight: '1.7' }}>
+              <p style={{ color: 'var(--text-secondary)', fontSize: '0.96rem', lineHeight: '1.7', marginBottom: '1rem' }}>
                 {founderData.bio}
               </p>
 
-              {/* Inspiring Quote */}
-              <blockquote className="founder-quote">
+              {/* Inspiring Quote Banner */}
+              <blockquote className="founder-quote" style={{ fontStyle: 'italic', borderLeft: '4px solid #FF9933', paddingLeft: '1rem', margin: '1rem 0' }}>
                 {founderData.quote}
               </blockquote>
 
-              {/* Key Milestone Timeline */}
-              <h4 style={{ fontSize: '1.05rem', marginTop: '1rem', color: 'var(--color-navy)' }}>Key Milestones & Impact</h4>
-              <div className="founder-timeline">
-                {founderData.achievements.map((item, idx) => (
-                  <div key={idx} className="timeline-item">
-                    <div className="timeline-year">{item.year}</div>
-                    <div className="timeline-title">{item.title}</div>
-                    <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>{item.desc}</div>
-                  </div>
-                ))}
+              {/* Preamble Highlights Box */}
+              <div style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border-color)', borderRadius: 'var(--border-radius-md)', padding: '1.25rem', margin: '1.25rem 0' }}>
+                <h4 style={{ fontSize: '1rem', fontWeight: 800, color: 'var(--color-royal-blue)', display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
+                  <i className="fa-solid fa-scale-balanced" style={{ color: '#FF9933' }} aria-hidden="true"></i>
+                  PPPI Official Preamble Core Principles
+                </h4>
+                <ul style={{ paddingLeft: '1.2rem', fontSize: '0.88rem', color: 'var(--text-secondary)', lineHeight: '1.6', display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
+                  <li><strong>Sacred Right to Live:</strong> Every living being has an inherent right to live peacefully on this planet without harm.</li>
+                  <li><strong>Peace Over War:</strong> Universal integration must be established solely by love, affection, and brotherhood beyond all borders and religions.</li>
+                  <li><strong>Wisdom & Education:</strong> <em>"Nahi Jnaanena Sadrsham Pavithram Iha Vidyathe"</em> — Education and wisdom are the highest holiness.</li>
+                  <li><strong>Moral Protection:</strong> <em>"Save the mild and tame the wild — Dhushta Shikshana, Shishta Rakshana"</em> — Defend the righteous and punish the wicked.</li>
+                </ul>
+              </div>
+
+              {/* Central Secretariat Direct Contact */}
+              <div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap', fontSize: '0.85rem', color: 'var(--text-secondary)', margin: '1rem 0' }}>
+                <div><i className="fa-solid fa-location-dot" style={{ color: '#FF9933' }} aria-hidden="true"></i> {siteMetadata.headquarters}</div>
+                <div><i className="fa-solid fa-phone" style={{ color: '#16A34A' }} aria-hidden="true"></i> <a href="tel:+917259798393" style={{ color: 'inherit', textDecoration: 'none', fontWeight: 700 }}>+91 7259798393</a></div>
+                <div><i className="fa-solid fa-envelope" style={{ color: '#2563EB' }} aria-hidden="true"></i> <a href="mailto:bpasha46@gmail.com" style={{ color: 'inherit', textDecoration: 'none', fontWeight: 700 }}>bpasha46@gmail.com</a></div>
               </div>
 
               {/* Social Links & Contact CTA */}
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '1.5rem', flexWrap: 'wrap', gap: '1rem' }}>
-                <div style={{ display: 'flex', gap: '0.75rem' }}>
-                  <a href={founderData.socials.linkedin} target="_blank" rel="noreferrer" className="btn btn-secondary btn-sm" style={{ width: '40px', height: '40px', padding: 0, borderRadius: '50%' }}>
-                    <i className="fa-brands fa-linkedin-in"></i>
+                <div style={{ display: 'flex', gap: '0.75rem' }} aria-label="Dr. Pasha Social Channels">
+                  <a
+                    href="mailto:bpasha46@gmail.com"
+                    className="btn btn-secondary btn-sm"
+                    style={{ width: '40px', height: '40px', padding: 0, borderRadius: '50%' }}
+                    aria-label="Email Dr. Pasha"
+                  >
+                    <i className="fa-solid fa-envelope" aria-hidden="true"></i>
                   </a>
-                  <a href={founderData.socials.facebook} target="_blank" rel="noreferrer" className="btn btn-secondary btn-sm" style={{ width: '40px', height: '40px', padding: 0, borderRadius: '50%' }}>
-                    <i className="fa-brands fa-facebook-f"></i>
+                  <a
+                    href="tel:+917259798393"
+                    className="btn btn-secondary btn-sm"
+                    style={{ width: '40px', height: '40px', padding: 0, borderRadius: '50%' }}
+                    aria-label="Call Dr. Pasha"
+                  >
+                    <i className="fa-solid fa-phone" aria-hidden="true"></i>
                   </a>
-                  <a href={founderData.socials.twitter} target="_blank" rel="noreferrer" className="btn btn-secondary btn-sm" style={{ width: '40px', height: '40px', padding: 0, borderRadius: '50%' }}>
-                    <i className="fa-brands fa-twitter"></i>
+                  <a
+                    href={founderData.socials.twitter}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-secondary btn-sm"
+                    style={{ width: '40px', height: '40px', padding: 0, borderRadius: '50%' }}
+                    aria-label="Dr. Pasha Twitter"
+                  >
+                    <i className="fa-brands fa-twitter" aria-hidden="true"></i>
                   </a>
-                  <a href={founderData.socials.instagram} target="_blank" rel="noreferrer" className="btn btn-secondary btn-sm" style={{ width: '40px', height: '40px', padding: 0, borderRadius: '50%' }}>
-                    <i className="fa-brands fa-instagram"></i>
+                  <a
+                    href={founderData.socials.facebook}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-secondary btn-sm"
+                    style={{ width: '40px', height: '40px', padding: 0, borderRadius: '50%' }}
+                    aria-label="Dr. Pasha Facebook"
+                  >
+                    <i className="fa-brands fa-facebook-f" aria-hidden="true"></i>
                   </a>
                 </div>
 
-                <button className="btn btn-primary btn-sm" onClick={() => { setActivePage('founder'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
-                  <i className="fa-solid fa-file-invoice"></i> Read Full Presidential Profile
+                <button
+                  className="btn btn-primary btn-sm"
+                  onClick={() => { setActivePage('founder'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                  aria-label="Read Full Preamble & Presidential Profile"
+                >
+                  <i className="fa-solid fa-book-bookmark" aria-hidden="true"></i> Read Full Preamble & Profile
                 </button>
               </div>
             </div>

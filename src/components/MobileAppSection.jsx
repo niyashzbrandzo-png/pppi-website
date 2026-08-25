@@ -13,7 +13,7 @@ export default function MobileAppSection() {
   ];
 
   return (
-    <section className="section-padding" id="app" style={{ backgroundColor: 'var(--bg-secondary)', overflow: 'hidden' }}>
+    <section className="section-padding" id="app" style={{ backgroundColor: 'var(--bg-secondary)', overflow: 'hidden' }} aria-label="PPPI Connect Mobile Application">
       <div className="container">
         <div className="grid-2col">
           {/* Left Column: Mockups & Visuals */}
@@ -21,14 +21,18 @@ export default function MobileAppSection() {
             <div style={{ position: 'relative', display: 'inline-block' }}>
               <img
                 src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=800&q=80"
-                alt="PPPI Connect Mobile App Interface"
+                alt="PPPI Connect Mobile App Interface for Android and iOS"
                 className="mockup-img"
                 style={{ width: '320px', height: '620px', objectFit: 'cover' }}
+                loading="lazy"
+                decoding="async"
+                width="320"
+                height="620"
               />
 
               {/* Floating Badge Overlay */}
               <div className="app-qr-floating-badge">
-                <i className="fa-solid fa-qrcode" style={{ fontSize: '2rem', color: 'var(--color-royal-blue)' }}></i>
+                <i className="fa-solid fa-qrcode" style={{ fontSize: '2rem', color: 'var(--color-royal-blue)' }} aria-hidden="true"></i>
                 <div>
                   <div style={{ fontWeight: 800, fontSize: '0.9rem' }}>Digital ID Pass</div>
                   <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Scan at Rallies</div>
@@ -40,7 +44,7 @@ export default function MobileAppSection() {
           {/* Right Column: Features & Downloads */}
           <div>
             <div className="section-badge">
-              <i className="fa-solid fa-mobile-screen-button"></i>
+              <i className="fa-solid fa-mobile-screen-button" aria-hidden="true"></i>
               <span>PPPI CONNECT MOBILE ECOSYSTEM</span>
             </div>
 
@@ -56,7 +60,7 @@ export default function MobileAppSection() {
             <div className="form-row-2col" style={{ gap: '0.85rem', marginBottom: '2.5rem' }}>
               {appFeatures.map((feat, i) => (
                 <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.6rem', fontSize: '0.88rem', color: 'var(--text-primary)' }}>
-                  <i className="fa-solid fa-circle-check" style={{ color: 'var(--color-green-dark)', marginTop: '0.2rem' }}></i>
+                  <i className="fa-solid fa-circle-check" style={{ color: 'var(--color-green-dark)', marginTop: '0.2rem' }} aria-hidden="true"></i>
                   <span>{feat}</span>
                 </div>
               ))}
@@ -67,19 +71,26 @@ export default function MobileAppSection() {
               <a
                 href="https://play.google.com"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="btn btn-primary btn-lg"
                 style={{ borderRadius: 'var(--border-radius-md)' }}
+                aria-label="Download PPPI Connect on Google Play Store"
               >
-                <i className="fa-brands fa-google-play" style={{ fontSize: '1.4rem' }}></i>
+                <i className="fa-brands fa-google-play" style={{ fontSize: '1.4rem' }} aria-hidden="true"></i>
                 <div style={{ textAlign: 'left', lineHeight: 1.1 }}>
                   <div style={{ fontSize: '0.7rem', textTransform: 'uppercase', opacity: 0.8 }}>Get it on</div>
                   <div style={{ fontSize: '1rem', fontWeight: 700 }}>Google Play Store</div>
                 </div>
               </a>
 
-              <div className="app-store-badge disabled" title="iOS App Store version coming soon!">
-                <i className="fa-brands fa-apple" style={{ fontSize: '1.6rem' }}></i>
+              <div
+                className="app-store-badge disabled"
+                title="iOS App Store version coming soon!"
+                role="button"
+                aria-disabled="true"
+                aria-label="Apple App Store version coming soon"
+              >
+                <i className="fa-brands fa-apple" style={{ fontSize: '1.6rem' }} aria-hidden="true"></i>
                 <div style={{ textAlign: 'left', lineHeight: 1.1 }}>
                   <div style={{ fontSize: '0.7rem', textTransform: 'uppercase', opacity: 0.7 }}>Download on</div>
                   <div style={{ fontSize: '0.95rem', fontWeight: 700 }}>App Store (Coming Soon)</div>

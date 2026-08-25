@@ -31,11 +31,11 @@ export default function NewsSection({ setActivePage }) {
   }, []);
 
   return (
-    <section className="section-padding" id="news" style={{ backgroundColor: 'var(--bg-secondary)' }}>
+    <section className="section-padding" id="news" style={{ backgroundColor: 'var(--bg-secondary)' }} aria-label="PPPI News and Press Releases">
       <div className="container">
         <div className="section-header">
           <div className="section-badge">
-            <i className="fa-solid fa-newspaper"></i>
+            <i className="fa-solid fa-newspaper" aria-hidden="true"></i>
             <span>MEDIA & PRESS DESK</span>
           </div>
           <h2 className="section-title">
@@ -48,14 +48,22 @@ export default function NewsSection({ setActivePage }) {
 
         <div className="cards-grid-3">
           {newsList.map((item) => (
-            <div key={item.id} className="news-card">
-              <img src={item.image} alt={item.title} style={{ height: '220px', width: '100%', objectFit: 'cover' }} />
+            <article key={item.id} className="news-card">
+              <img
+                src={item.image}
+                alt={`${item.title} - PPPI News`}
+                style={{ height: '220px', width: '100%', objectFit: 'cover' }}
+                loading="lazy"
+                decoding="async"
+                width="600"
+                height="350"
+              />
               <div style={{ padding: '1.5rem' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
                   <span style={{ fontSize: '0.78rem', fontWeight: 700, color: 'var(--color-royal-blue)', background: 'rgba(30, 58, 138, 0.1)', padding: '0.2rem 0.65rem', borderRadius: 'var(--border-radius-full)' }}>
                     {item.category}
                   </span>
-                  <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>{item.date}</span>
+                  <time className="news-date" style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>{item.date}</time>
                 </div>
 
                 <h3 style={{ fontSize: '1.15rem', color: 'var(--color-navy)', marginBottom: '0.75rem', lineHeight: '1.35' }}>
@@ -68,32 +76,46 @@ export default function NewsSection({ setActivePage }) {
 
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderTop: '1px solid var(--border-color)', paddingTop: '0.85rem' }}>
                   <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>By {item.author}</span>
-                  <button className="btn btn-secondary btn-sm" onClick={() => setSelectedNews(item)}>
-                    Read More <i className="fa-solid fa-arrow-right"></i>
+                  <button
+                    className="btn btn-secondary btn-sm"
+                    onClick={() => setSelectedNews(item)}
+                    aria-label={`Read full article: ${item.title}`}
+                  >
+                    Read More <i className="fa-solid fa-arrow-right" aria-hidden="true"></i>
                   </button>
                 </div>
               </div>
-            </div>
+            </article>
           ))}
         </div>
 
         {/* Read Full Press Release Modal */}
         {selectedNews && (
-          <div className="modal-backdrop" onClick={() => setSelectedNews(null)}>
+          <div className="modal-backdrop" onClick={() => setSelectedNews(null)} role="dialog" aria-modal="true" aria-labelledby="news-modal-title">
             <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-              <button className="modal-close-btn" onClick={() => setSelectedNews(null)}>
-                <i className="fa-solid fa-xmark"></i>
+              <button
+                className="modal-close-btn"
+                onClick={() => setSelectedNews(null)}
+                aria-label="Close article modal"
+              >
+                <i className="fa-solid fa-xmark" aria-hidden="true"></i>
               </button>
 
               <span style={{ fontSize: '0.8rem', fontWeight: 700, color: 'var(--color-saffron-dark)', textTransform: 'uppercase' }}>
                 {selectedNews.category} • {selectedNews.date}
               </span>
 
-              <h3 style={{ fontSize: '1.4rem', margin: '0.5rem 0 1rem', color: 'var(--color-navy)' }}>
+              <h3 id="news-modal-title" style={{ fontSize: '1.4rem', margin: '0.5rem 0 1rem', color: 'var(--color-navy)' }}>
                 {selectedNews.title}
               </h3>
 
-              <img src={selectedNews.image} alt={selectedNews.title} style={{ borderRadius: 'var(--border-radius-md)', height: '260px', width: '100%', objectFit: 'cover', marginBottom: '1.25rem' }} />
+              <img
+                src={selectedNews.image}
+                alt={selectedNews.title}
+                style={{ borderRadius: 'var(--border-radius-md)', height: '260px', width: '100%', objectFit: 'cover', marginBottom: '1.25rem' }}
+                loading="lazy"
+                decoding="async"
+              />
 
               <p style={{ color: 'var(--text-secondary)', lineHeight: '1.7', fontSize: '0.95rem', marginBottom: '1.5rem' }}>
                 {selectedNews.summary} The Pasha People Party of India remains committed to transparent public communications. Members are encouraged to share official updates via the PPPI Connect app.
@@ -101,7 +123,10 @@ export default function NewsSection({ setActivePage }) {
 
               <div style={{ display: 'flex', gap: '1rem', justifyContent: 'flex-end' }}>
                 <button className="btn btn-secondary btn-sm" onClick={() => setSelectedNews(null)}>Close</button>
-                <button className="btn btn-primary btn-sm" onClick={() => { setSelectedNews(null); setActivePage('news'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
+                <button
+                  className="btn btn-primary btn-sm"
+                  onClick={() => { setSelectedNews(null); setActivePage('news'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                >
                   View All News Articles
                 </button>
               </div>

@@ -35,11 +35,11 @@ export default function GallerySection({ openLightbox }) {
     : galleryItems.filter((item) => item.category.toLowerCase() === activeCategory.toLowerCase());
 
   return (
-    <section className="section-padding" id="gallery">
+    <section className="section-padding" id="gallery" aria-label="PPPI Media and Photo Gallery">
       <div className="container">
         <div className="section-header">
           <div className="section-badge">
-            <i className="fa-solid fa-images"></i>
+            <i className="fa-solid fa-images" aria-hidden="true"></i>
             <span>MEDIA ARCHIVE</span>
           </div>
           <h2 className="section-title">
@@ -49,10 +49,12 @@ export default function GallerySection({ openLightbox }) {
             Visual highlights of public rallies, volunteer initiatives, and executive council meetings.
           </p>
 
-          <div className="filter-tabs" style={{ marginTop: '1.5rem' }}>
+          <div className="filter-tabs" style={{ marginTop: '1.5rem' }} role="tablist" aria-label="Gallery Category Tabs">
             {categories.map((cat) => (
               <button
                 key={cat}
+                role="tab"
+                aria-selected={activeCategory === cat}
                 className={`filter-btn ${activeCategory === cat ? 'active' : ''}`}
                 onClick={() => setActiveCategory(cat)}
               >
@@ -64,13 +66,33 @@ export default function GallerySection({ openLightbox }) {
 
         <div className="gallery-grid">
           {filteredGallery.map((item) => (
-            <div key={item.id} className="gallery-item" onClick={() => openLightbox(item)}>
-              <img src={item.image} alt={item.title} />
+            <div
+              key={item.id}
+              className="gallery-item"
+              onClick={() => openLightbox(item)}
+              role="button"
+              tabIndex="0"
+              aria-label={`View enlarged photo: ${item.title}`}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  openLightbox(item);
+                }
+              }}
+            >
+              <img
+                src={item.image}
+                alt={`${item.title} - Pasha People Party of India Event & Ground Action`}
+                loading="lazy"
+                decoding="async"
+                width="600"
+                height="400"
+              />
               <div className="gallery-overlay">
                 <span style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--color-saffron)' }}>{item.category}</span>
-                <h4 style={{ fontSize: '1rem', fontWeight: 600 }}>{item.title}</h4>
+                <h3 style={{ fontSize: '1rem', fontWeight: 600, color: '#FFFFFF', margin: '0.2rem 0' }}>{item.title}</h3>
                 <div style={{ fontSize: '0.8rem', marginTop: '0.25rem' }}>
-                  <i className="fa-solid fa-expand"></i> Click to Enlarge
+                  <i className="fa-solid fa-expand" aria-hidden="true"></i> Click to Enlarge
                 </div>
               </div>
             </div>

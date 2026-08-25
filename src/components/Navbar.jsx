@@ -35,26 +35,36 @@ export default function Navbar({ activePage, setActivePage, openMembershipModal,
 
   return (
     <>
-      <header className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
+      <header className={`navbar ${isScrolled ? 'scrolled' : ''}`} role="banner">
         <div className="container nav-container">
           {/* Logo */}
-          <div className="brand-logo" onClick={() => handleNavClick('home')} style={{ cursor: 'pointer' }}>
-            <div className="brand-emblem">
+          <a
+            href="/"
+            className="brand-logo"
+            onClick={(e) => {
+              e.preventDefault();
+              handleNavClick('home');
+            }}
+            title="PPPI CONNECT - Pasha People Party of India"
+            style={{ textDecoration: 'none' }}
+          >
+            <div className="brand-emblem" aria-hidden="true">
               <i className="fa-solid fa-flag"></i>
             </div>
             <div className="brand-text-wrap">
               <span className="brand-title">PPPI CONNECT</span>
               <span className="brand-subtitle">PASHA PEOPLE PARTY OF INDIA</span>
             </div>
-          </div>
+          </a>
 
           {/* Desktop Navigation Links */}
-          <nav className="nav-menu">
+          <nav className="nav-menu" aria-label="Main Navigation">
             {navItems.map((item) => (
               <a
                 key={item.id}
                 href={`#${item.id}`}
                 className={`nav-link ${activePage === item.id ? 'active' : ''}`}
+                aria-current={activePage === item.id ? 'page' : undefined}
                 onClick={(e) => {
                   e.preventDefault();
                   handleNavClick(item.id);
@@ -67,11 +77,19 @@ export default function Navbar({ activePage, setActivePage, openMembershipModal,
 
           {/* Right Action Buttons */}
           <div className="nav-actions">
-            <button className="btn btn-primary btn-sm" onClick={() => openMembershipModal('Free Member')}>
-              <i className="fa-solid fa-user-plus"></i> Join Now
+            <button
+              className="btn btn-primary btn-sm"
+              onClick={() => openMembershipModal('Free Member')}
+              aria-label="Join PPPI Membership"
+            >
+              <i className="fa-solid fa-user-plus" aria-hidden="true"></i> Join Now
             </button>
-            <button className="btn btn-saffron btn-sm" onClick={() => handleNavClick('app')}>
-              <i className="fa-solid fa-mobile-screen-button"></i> Download App
+            <button
+              className="btn btn-saffron btn-sm"
+              onClick={() => handleNavClick('app')}
+              aria-label="Download PPPI Connect Mobile App"
+            >
+              <i className="fa-solid fa-mobile-screen-button" aria-hidden="true"></i> Download App
             </button>
           </div>
 
@@ -79,20 +97,26 @@ export default function Navbar({ activePage, setActivePage, openMembershipModal,
           <button
             className="mobile-toggle"
             onClick={() => setIsMobileOpen(!isMobileOpen)}
-            aria-label="Toggle navigation drawer"
+            aria-label={isMobileOpen ? 'Close mobile menu' : 'Open mobile menu'}
+            aria-expanded={isMobileOpen}
           >
-            <i className={`fa-solid ${isMobileOpen ? 'fa-xmark' : 'fa-bars'}`}></i>
+            <i className={`fa-solid ${isMobileOpen ? 'fa-xmark' : 'fa-bars'}`} aria-hidden="true"></i>
           </button>
         </div>
       </header>
 
       {/* Mobile Drawer */}
-      <div className={`mobile-drawer ${isMobileOpen ? 'open' : ''}`}>
+      <nav
+        className={`mobile-drawer ${isMobileOpen ? 'open' : ''}`}
+        aria-label="Mobile Navigation"
+        aria-hidden={!isMobileOpen}
+      >
         {navItems.map((item) => (
           <a
             key={item.id}
             href={`#${item.id}`}
             className="mobile-nav-link"
+            aria-current={activePage === item.id ? 'page' : undefined}
             onClick={(e) => {
               e.preventDefault();
               handleNavClick(item.id);
@@ -102,14 +126,26 @@ export default function Navbar({ activePage, setActivePage, openMembershipModal,
           </a>
         ))}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginTop: '1rem' }}>
-          <button className="btn btn-primary btn-block" onClick={() => { setIsMobileOpen(false); openMembershipModal('Free Member'); }}>
-            <i className="fa-solid fa-user-plus"></i> Join Membership Now
+          <button
+            className="btn btn-primary btn-block"
+            onClick={() => {
+              setIsMobileOpen(false);
+              openMembershipModal('Free Member');
+            }}
+          >
+            <i className="fa-solid fa-user-plus" aria-hidden="true"></i> Join Membership Now
           </button>
-          <button className="btn btn-saffron btn-block" onClick={() => { setIsMobileOpen(false); handleNavClick('app'); }}>
-            <i className="fa-solid fa-mobile-screen-button"></i> Download PPPI Mobile App
+          <button
+            className="btn btn-saffron btn-block"
+            onClick={() => {
+              setIsMobileOpen(false);
+              handleNavClick('app');
+            }}
+          >
+            <i className="fa-solid fa-mobile-screen-button" aria-hidden="true"></i> Download PPPI Mobile App
           </button>
         </div>
-      </div>
+      </nav>
     </>
   );
 }

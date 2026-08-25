@@ -1,6 +1,29 @@
+# ==============================================================================
+# PPPI CONNECT - Official Robots.txt
+# Pasha People Party of India (https://pppiconnect.com)
+# ==============================================================================
+
 User-agent: *
 Allow: /
+Allow: /public/
+Allow: /assets/
 Disallow: /admin
 Disallow: /api/
+Disallow: /private/
+Disallow: /*?*preview=true
 
+# Search Engine Crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+# Host Directive
+Host: https://pppiconnect.com
+
+# XML Sitemaps
 Sitemap: https://pppiconnect.com/sitemap.xml

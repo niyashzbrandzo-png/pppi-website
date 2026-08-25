@@ -2,12 +2,17 @@ import React from 'react';
 
 export default function Hero({ openMembershipModal, setActivePage }) {
   return (
-    <section className="hero-wrapper" id="home">
-      {/* Royalty-free background rally overlay image */}
+    <section className="hero-wrapper" id="home" aria-label="Hero Section">
+      {/* Background rally overlay image with fast priority */}
       <img
         src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1920&q=80"
-        alt="PPPI Public Rally Crowd"
+        alt="Pasha People Party of India (PPPI) Public Rally Crowd"
         className="hero-backdrop-image"
+        loading="eager"
+        fetchPriority="high"
+        decoding="async"
+        width="1920"
+        height="1080"
       />
 
       <div className="container" style={{ position: 'relative', zIndex: 2 }}>
@@ -15,7 +20,7 @@ export default function Hero({ openMembershipModal, setActivePage }) {
           {/* Hero Left Content */}
           <div>
             <div className="section-badge">
-              <i className="fa-solid fa-flag-checkered"></i>
+              <i className="fa-solid fa-flag-checkered" aria-hidden="true"></i>
               <span>DIGITAL POLITICAL MEMBERSHIP ECOSYSTEM</span>
             </div>
 
@@ -25,31 +30,43 @@ export default function Hero({ openMembershipModal, setActivePage }) {
             </h1>
 
             <p className="hero-subheading">
-              PPPI Connect is a digital political membership platform designed to connect citizens, leaders, and communities through technology, transparency, and participation.
+              PPPI Connect is India's premier digital political membership platform designed to connect citizens, leaders, and grassroots communities through technology, transparent public funds, and direct civic participation.
             </p>
 
             <div className="hero-actions">
-              <button className="btn btn-primary btn-lg" onClick={() => openMembershipModal('Free Member')}>
-                <i className="fa-solid fa-id-card"></i> Join Membership
+              <button
+                className="btn btn-primary btn-lg"
+                onClick={() => openMembershipModal('Free Member')}
+                aria-label="Join PPPI Membership - Free Registration"
+              >
+                <i className="fa-solid fa-id-card" aria-hidden="true"></i> Join Membership
               </button>
-              <button className="btn btn-saffron btn-lg" onClick={() => { setActivePage('app'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
-                <i className="fa-solid fa-mobile-screen"></i> Download Mobile App
+              <button
+                className="btn btn-saffron btn-lg"
+                onClick={() => { setActivePage('app'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                aria-label="Download PPPI Connect Mobile Application"
+              >
+                <i className="fa-solid fa-mobile-screen" aria-hidden="true"></i> Download Mobile App
               </button>
-              <button className="btn btn-secondary btn-lg" onClick={() => { setActivePage('manifesto'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
-                <i className="fa-solid fa-book-open"></i> Read Manifesto
+              <button
+                className="btn btn-secondary btn-lg"
+                onClick={() => { setActivePage('manifesto'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                aria-label="Read PPPI 2026 Party Manifesto"
+              >
+                <i className="fa-solid fa-book-open" aria-hidden="true"></i> Read Manifesto
               </button>
             </div>
 
             {/* Quick Trust Highlights */}
             <div style={{ display: 'flex', gap: '1.5rem', marginTop: '2.5rem', flexWrap: 'wrap' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.9rem', fontWeight: 600, color: 'var(--text-secondary)' }}>
-                <i className="fa-solid fa-circle-check" style={{ color: 'var(--color-green)' }}></i> 100% KYC Verified
+                <i className="fa-solid fa-circle-check" style={{ color: 'var(--color-green)' }} aria-hidden="true"></i> 100% KYC Verified
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.9rem', fontWeight: 600, color: 'var(--text-secondary)' }}>
-                <i className="fa-solid fa-shield-halved" style={{ color: 'var(--color-royal-blue)' }}></i> AES-256 Encrypted
+                <i className="fa-solid fa-shield-halved" style={{ color: 'var(--color-royal-blue)' }} aria-hidden="true"></i> AES-256 Encrypted
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.9rem', fontWeight: 600, color: 'var(--text-secondary)' }}>
-                <i className="fa-solid fa-award" style={{ color: 'var(--color-saffron-dark)' }}></i> Open Fund Ledger
+                <i className="fa-solid fa-award" style={{ color: 'var(--color-saffron-dark)' }} aria-hidden="true"></i> Open Fund Ledger
               </div>
             </div>
           </div>
@@ -58,10 +75,14 @@ export default function Hero({ openMembershipModal, setActivePage }) {
           <div className="hero-image-card">
             <img
               src="https://images.unsplash.com/photo-1577495508048-b635879837f1?auto=format&fit=crop&w=1000&q=80"
-              alt="PPPI Leaders & Volunteers Convention"
+              alt="PPPI Leaders and Grassroots Volunteers Convention"
+              loading="eager"
+              decoding="async"
+              width="1000"
+              height="667"
             />
             <div className="hero-badge-overlay">
-              <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: 'var(--saffron-gradient)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#FFFFFF', fontSize: '1.2rem', flexShrink: 0 }}>
+              <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: 'var(--saffron-gradient)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#FFFFFF', fontSize: '1.2rem', flexShrink: 0 }} aria-hidden="true">
                 <i className="fa-solid fa-users-viewfinder"></i>
               </div>
               <div>
@@ -74,7 +95,7 @@ export default function Hero({ openMembershipModal, setActivePage }) {
       </div>
 
       {/* Wave Bottom Divider */}
-      <div className="wave-divider">
+      <div className="wave-divider" aria-hidden="true">
         <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
           <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118.94,130.83,121.2,202,112.57,243,107.5,283.67,82.72,321.39,56.44Z"></path>
         </svg>

@@ -40,11 +40,11 @@ export default function EventsSection({ openEventModal }) {
     : eventsList.filter((e) => e.category === filter);
 
   return (
-    <section className="section-padding" id="events">
+    <section className="section-padding" id="events" aria-label="PPPI Public Rallies and Events">
       <div className="container">
         <div className="section-header">
           <div className="section-badge">
-            <i className="fa-solid fa-calendar-days"></i>
+            <i className="fa-solid fa-calendar-days" aria-hidden="true"></i>
             <span>RALLIES & CONCLAVES</span>
           </div>
           <h2 className="section-title">
@@ -54,10 +54,12 @@ export default function EventsSection({ openEventModal }) {
             Participate in democratic rallies, youth conclaves, agrarian workshops, and town halls across India.
           </p>
 
-          <div className="filter-tabs" style={{ marginTop: '1.5rem' }}>
+          <div className="filter-tabs" style={{ marginTop: '1.5rem' }} role="tablist" aria-label="Event Filter Tabs">
             {['All', 'Upcoming', 'Past'].map((cat) => (
               <button
                 key={cat}
+                role="tab"
+                aria-selected={filter === cat}
                 className={`filter-btn ${filter === cat ? 'active' : ''}`}
                 onClick={() => setFilter(cat)}
               >
@@ -69,8 +71,16 @@ export default function EventsSection({ openEventModal }) {
 
         <div className="cards-grid-3">
           {filteredEvents.map((evt) => (
-            <div key={evt.id} className="event-card">
-              <img src={evt.image} alt={evt.title} style={{ height: '220px', width: '100%', objectFit: 'cover' }} />
+            <article key={evt.id} className="event-card">
+              <img
+                src={evt.image}
+                alt={`${evt.title} - PPPI Public Rally and Convention`}
+                style={{ height: '220px', width: '100%', objectFit: 'cover' }}
+                loading="lazy"
+                decoding="async"
+                width="600"
+                height="350"
+              />
               <div style={{ padding: '1.5rem' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
                   <span style={{ fontSize: '0.78rem', fontWeight: 700, padding: '0.2rem 0.6rem', borderRadius: 'var(--border-radius-full)', background: evt.category === 'Upcoming' ? 'rgba(19, 136, 8, 0.12)' : 'rgba(100, 116, 139, 0.12)', color: evt.category === 'Upcoming' ? 'var(--color-green-dark)' : 'var(--text-muted)' }}>
@@ -83,12 +93,12 @@ export default function EventsSection({ openEventModal }) {
                 </h3>
 
                 <div className="event-meta">
-                  <span><i className="fa-solid fa-calendar" style={{ color: 'var(--color-saffron-dark)' }}></i> {evt.date}</span>
-                  <span><i className="fa-solid fa-clock"></i> {evt.time}</span>
+                  <span><i className="fa-solid fa-calendar" style={{ color: 'var(--color-saffron-dark)' }} aria-hidden="true"></i> {evt.date}</span>
+                  <span><i className="fa-solid fa-clock" aria-hidden="true"></i> {evt.time}</span>
                 </div>
 
                 <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginBottom: '1rem', display: 'flex', alignItems: 'flex-start', gap: '0.5rem' }}>
-                  <i className="fa-solid fa-location-dot" style={{ color: 'var(--color-royal-blue)', marginTop: '0.2rem' }}></i>
+                  <i className="fa-solid fa-location-dot" style={{ color: 'var(--color-royal-blue)', marginTop: '0.2rem' }} aria-hidden="true"></i>
                   <span>{evt.venue}</span>
                 </div>
 
@@ -97,16 +107,20 @@ export default function EventsSection({ openEventModal }) {
                 </p>
 
                 {evt.category === 'Upcoming' ? (
-                  <button className="btn btn-primary btn-block btn-sm" onClick={() => openEventModal(evt)}>
-                    <i className="fa-solid fa-ticket"></i> Register / Get Event Pass
+                  <button
+                    className="btn btn-primary btn-block btn-sm"
+                    onClick={() => openEventModal(evt)}
+                    aria-label={`Register and get event pass for ${evt.title}`}
+                  >
+                    <i className="fa-solid fa-ticket" aria-hidden="true"></i> Register / Get Event Pass
                   </button>
                 ) : (
-                  <button className="btn btn-secondary btn-block btn-sm" disabled>
-                    <i className="fa-solid fa-circle-check"></i> Event Concluded
+                  <button className="btn btn-secondary btn-block btn-sm" disabled aria-label="Event Concluded">
+                    <i className="fa-solid fa-circle-check" aria-hidden="true"></i> Event Concluded
                   </button>
                 )}
               </div>
-            </div>
+            </article>
           ))}
         </div>
       </div>

@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import SEO from './components/SEO';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import FounderPage from './pages/FounderPage';
@@ -15,8 +16,39 @@ import { PrivacyPolicyPage, TermsPage, RefundPolicyPage } from './pages/PolicyPa
 import NotFoundPage from './pages/NotFoundPage';
 import { MembershipModal, EventModal, DonationModal, LightboxModal } from './components/Modals';
 
+const VALID_PAGES = [
+  'home', 'about', 'founder', 'leadership', 'manifesto',
+  'membership', 'app', 'events', 'news', 'gallery',
+  'faq', 'contact', 'privacy', 'terms', 'refund'
+];
+
+function getInitialPage() {
+  if (typeof window === 'undefined') return 'home';
+
+  // Check URL path e.g. /manifesto
+  const path = window.location.pathname.replace(/^\/+|\/+$/g, '');
+  if (path && VALID_PAGES.includes(path)) {
+    return path;
+  }
+
+  // Check hash e.g. #manifesto
+  const hash = window.location.hash.replace(/^#/, '');
+  if (hash && VALID_PAGES.includes(hash)) {
+    return hash;
+  }
+
+  // Check query param e.g. ?page=manifesto
+  const params = new URLSearchParams(window.location.search);
+  const queryPage = params.get('page');
+  if (queryPage && VALID_PAGES.includes(queryPage)) {
+    return queryPage;
+  }
+
+  return 'home';
+}
+
 export default function App() {
-  const [activePage, setActivePage] = useState('home');
+  const [activePage, setActivePage] = useState(getInitialPage);
   const [membershipModalPlan, setMembershipModalPlan] = useState(null);
   const [eventModalData, setEventModalData] = useState(null);
   const [showDonationModal, setShowDonationModal] = useState(false);
@@ -24,6 +56,35 @@ export default function App() {
   const [toasts, setToasts] = useState([]);
   const [showBackToTop, setShowBackToTop] = useState(false);
 
+  // Sync route navigation with browser history
+  const navigateToPage = useCallback((pageId, updateHistory = true) => {
+    const targetPage = VALID_PAGES.includes(pageId) ? pageId : 'home';
+    setActivePage(targetPage);
+
+    if (updateHistory && typeof window !== 'undefined') {
+      const url = targetPage === 'home' ? '/' : `#${targetPage}`;
+      if (window.location.hash !== `#${targetPage}` && !(targetPage === 'home' && (!window.location.hash || window.location.hash === '#home'))) {
+        window.history.pushState({ page: targetPage }, '', url);
+      }
+    }
+  }, []);
+
+  // Listen for browser Back / Forward buttons & Hash changes
+  useEffect(() => {
+    const handlePopState = () => {
+      const currentPage = getInitialPage();
+      setActivePage(currentPage);
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    window.addEventListener('hashchange', handlePopState);
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+      window.removeEventListener('hashchange', handlePopState);
+    };
+  }, []);
+
+  // Scroll back-to-top button visibility
   useEffect(() => {
     const handleScroll = () => {
       setShowBackToTop(window.scrollY > 400);
@@ -54,24 +115,24 @@ export default function App() {
             openMembershipModal={(plan) => setMembershipModalPlan(plan)}
             openEventModal={(evt) => setEventModalData(evt)}
             openLightbox={(item) => setLightboxItem(item)}
-            setActivePage={setActivePage}
+            setActivePage={navigateToPage}
             addToast={addToast}
           />
         );
       case 'about':
-        return <AboutPage setActivePage={setActivePage} />;
+        return <AboutPage setActivePage={navigateToPage} />;
       case 'founder':
-        return <FounderPage setActivePage={setActivePage} />;
+        return <FounderPage setActivePage={navigateToPage} />;
       case 'leadership':
-        return <LeadershipPage setActivePage={setActivePage} />;
+        return <LeadershipPage setActivePage={navigateToPage} />;
       case 'manifesto':
-        return <ManifestoPage setActivePage={setActivePage} />;
+        return <ManifestoPage setActivePage={navigateToPage} />;
       case 'membership':
         return <MembershipPage openMembershipModal={(plan) => setMembershipModalPlan(plan)} />;
       case 'events':
         return <EventsPage openEventModal={(evt) => setEventModalData(evt)} />;
       case 'news':
-        return <NewsPage setActivePage={setActivePage} />;
+        return <NewsPage setActivePage={navigateToPage} />;
       case 'gallery':
         return <GalleryPage openLightbox={(item) => setLightboxItem(item)} />;
       case 'contact':
@@ -83,23 +144,36 @@ export default function App() {
       case 'refund':
         return <RefundPolicyPage />;
       default:
-        return <NotFoundPage setActivePage={setActivePage} />;
+        return <NotFoundPage setActivePage={navigateToPage} />;
     }
   };
 
   return (
     <div className="app-container">
+      {/* Dynamic SEO Meta & Schema.org JSON-LD */}
+      <SEO page={activePage} />
+
+      {/* Accessible Skip Link for SEO & Screen Readers */}
+      <a href="#main-content" className="skip-to-content">
+        Skip to main content
+      </a>
+
+      {/* Header & Navigation */}
       <Navbar
         activePage={activePage}
-        setActivePage={setActivePage}
+        setActivePage={navigateToPage}
         openMembershipModal={(plan) => setMembershipModalPlan(plan)}
         openDonationModal={() => setShowDonationModal(true)}
       />
 
-      {renderCurrentPage()}
+      {/* Main Content Landmark */}
+      <div id="main-content" tabIndex="-1" style={{ outline: 'none' }}>
+        {renderCurrentPage()}
+      </div>
 
+      {/* Footer */}
       <Footer
-        setActivePage={setActivePage}
+        setActivePage={navigateToPage}
         openDonationModal={() => setShowDonationModal(true)}
       />
 
@@ -110,8 +184,9 @@ export default function App() {
           style={{ background: 'var(--saffron-gradient)' }}
           onClick={() => setShowDonationModal(true)}
           title="Donate to PPPI Public Fund"
+          aria-label="Donate to PPPI Public Fund"
         >
-          <i className="fa-solid fa-heart"></i>
+          <i className="fa-solid fa-heart" aria-hidden="true"></i>
         </button>
 
         {showBackToTop && (
@@ -119,8 +194,9 @@ export default function App() {
             className="fab-btn"
             onClick={scrollToTop}
             title="Back to Top"
+            aria-label="Scroll Back to Top"
           >
-            <i className="fa-solid fa-arrow-up"></i>
+            <i className="fa-solid fa-arrow-up" aria-hidden="true"></i>
           </button>
         )}
       </div>
@@ -157,10 +233,10 @@ export default function App() {
       )}
 
       {/* Toast Notification Container */}
-      <div className="toast-container">
+      <div className="toast-container" role="region" aria-live="polite" aria-label="Notifications">
         {toasts.map((toast) => (
-          <div key={toast.id} className="toast">
-            <i className={`fa-solid ${toast.type === 'success' ? 'fa-circle-check green-text' : toast.type === 'warning' ? 'fa-triangle-exclamation saffron-text' : 'fa-circle-info'}`}></i>
+          <div key={toast.id} className="toast" role="alert">
+            <i className={`fa-solid ${toast.type === 'success' ? 'fa-circle-check green-text' : toast.type === 'warning' ? 'fa-triangle-exclamation saffron-text' : 'fa-circle-info'}`} aria-hidden="true"></i>
             <span>{toast.message}</span>
           </div>
         ))}
