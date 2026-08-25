@@ -14,6 +14,8 @@ import GalleryPage from './pages/GalleryPage';
 import ContactPage from './pages/ContactPage';
 import { PrivacyPolicyPage, TermsPage, RefundPolicyPage } from './pages/PolicyPages';
 import NotFoundPage from './pages/NotFoundPage';
+import MaintenanceScreen from './components/MaintenanceScreen';
+import { apiService } from './services/api';
 import { MembershipModal, EventModal, DonationModal, LightboxModal } from './components/Modals';
 
 const VALID_PAGES = [
@@ -55,6 +57,48 @@ export default function App() {
   const [lightboxItem, setLightboxItem] = useState(null);
   const [toasts, setToasts] = useState([]);
   const [showBackToTop, setShowBackToTop] = useState(false);
+
+  // Maintenance Mode Dynamic State
+  const [isMaintenanceMode, setIsMaintenanceMode] = useState(false);
+  const [maintenanceData, setMaintenanceData] = useState(null);
+
+  // Poll & sync maintenance status from backend
+  useEffect(() => {
+    let isMounted = true;
+
+    const checkMaintenanceStatus = async () => {
+      try {
+        // Query param override for live testing: ?preview=maintenance or ?preview=live
+        if (typeof window !== 'undefined') {
+          const params = new URLSearchParams(window.location.search);
+          if (params.get('preview') === 'maintenance') {
+            if (isMounted) setIsMaintenanceMode(true);
+            return;
+          }
+          if (params.get('preview') === 'live') {
+            if (isMounted) setIsMaintenanceMode(false);
+            return;
+          }
+        }
+
+        const res = await apiService.fetchMaintenanceStatus();
+        if (isMounted && res && res.data) {
+          setIsMaintenanceMode(Boolean(res.data.maintenance_mode));
+          setMaintenanceData(res.data);
+        }
+      } catch (err) {
+        console.warn('Maintenance status check fallback:', err.message);
+      }
+    };
+
+    checkMaintenanceStatus();
+    const interval = setInterval(checkMaintenanceStatus, 15000); // Sync every 15s
+
+    return () => {
+      isMounted = false;
+      clearInterval(interval);
+    };
+  }, []);
 
   // Sync route navigation with browser history
   const navigateToPage = useCallback((pageId, updateHistory = true) => {
@@ -104,6 +148,16 @@ export default function App() {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  // If Maintenance Mode is Active, render dedicated under-development screen
+  if (isMaintenanceMode) {
+    return (
+      <div className="app-container">
+        <SEO page="maintenance" />
+        <MaintenanceScreen maintenanceData={maintenanceData} />
+      </div>
+    );
+  }
 
   const renderCurrentPage = () => {
     switch (activePage) {

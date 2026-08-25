@@ -58,6 +58,15 @@ export const pageSEOMap = {
     ogImage: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&q=80',
     breadcrumbName: 'Home',
   },
+  maintenance: {
+    title: 'Currently Under Development | PPPI CONNECT - Pasha People Party of India',
+    description: 'The official portal and mobile app of Pasha People Party of India (PPPI) are currently under scheduled development and fine-tuning. Founded by Dr. B. Pasha in Hosur, Tamil Nadu. Vote for Pineapple.',
+    keywords: 'PPPI Under Development, PPPI Maintenance, Pasha People Party of India, Dr B Pasha, Vote for Pineapple, PPPI Connect Portal Upgrade',
+    canonical: `${BASE_SITE_URL}/`,
+    ogType: 'website',
+    ogImage: '/images/maintenance/pppi_manifesto_banner.jpg',
+    breadcrumbName: 'Under Development',
+  },
   about: {
     title: 'About PPPI | Official Charter, Preamble & Ideology of Pasha People Party of India',
     description: 'Learn about Pasha People Party of India (PPPI) founded by Dr. B. Pasha in Hosur, Tamil Nadu. Guided by universal peace, brotherhood, wisdom in education, and our 15 Core Manifesto Pledges for Peace, Prosperity and Power.',

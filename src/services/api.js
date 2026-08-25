@@ -105,6 +105,15 @@ export const apiService = {
   fetchNotifications: async () => {
     return request('/notifications', { method: 'GET' });
   },
+
+  // System Settings & Maintenance Mode
+  fetchSettings: async () => {
+    return request('/settings', { method: 'GET' });
+  },
+
+  fetchMaintenanceStatus: async () => {
+    return request('/settings/maintenance', { method: 'GET' });
+  },
 };
 
 export default apiService;
