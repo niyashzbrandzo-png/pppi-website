@@ -49,6 +49,18 @@ function getInitialPage() {
   return 'home';
 }
 
+function getInitialMaintenanceState() {
+  if (typeof window === 'undefined') return false;
+  try {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('preview') === 'maintenance') return true;
+    if (params.get('preview') === 'live') return false;
+    return localStorage.getItem('pppi_is_maintenance') === 'true';
+  } catch (e) {
+    return false;
+  }
+}
+
 export default function App() {
   const [activePage, setActivePage] = useState(getInitialPage);
   const [membershipModalPlan, setMembershipModalPlan] = useState(null);
@@ -58,8 +70,8 @@ export default function App() {
   const [toasts, setToasts] = useState([]);
   const [showBackToTop, setShowBackToTop] = useState(false);
 
-  // Maintenance Mode Dynamic State
-  const [isMaintenanceMode, setIsMaintenanceMode] = useState(false);
+  // Maintenance Mode Dynamic State (Persistent until disabled by Admin)
+  const [isMaintenanceMode, setIsMaintenanceMode] = useState(getInitialMaintenanceState);
   const [maintenanceData, setMaintenanceData] = useState(null);
 
   // Poll & sync maintenance status from backend
@@ -87,6 +99,9 @@ export default function App() {
           const isMaint = Boolean(dataObj.maintenance_mode);
           setIsMaintenanceMode(isMaint);
           setMaintenanceData(dataObj);
+          try {
+            localStorage.setItem('pppi_is_maintenance', isMaint ? 'true' : 'false');
+          } catch (e) {}
         }
       } catch (err) {
         console.warn('Maintenance status check fallback:', err.message);
@@ -94,7 +109,7 @@ export default function App() {
     };
 
     checkMaintenanceStatus();
-    const interval = setInterval(checkMaintenanceStatus, 5000); // Fast sync every 5s
+    const interval = setInterval(checkMaintenanceStatus, 4000); // Fast sync every 4s
 
     return () => {
       isMounted = false;
