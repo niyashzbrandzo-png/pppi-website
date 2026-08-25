@@ -82,9 +82,11 @@ export default function App() {
         }
 
         const res = await apiService.fetchMaintenanceStatus();
-        if (isMounted && res && res.data) {
-          setIsMaintenanceMode(Boolean(res.data.maintenance_mode));
-          setMaintenanceData(res.data);
+        if (isMounted && res) {
+          const dataObj = res.data && typeof res.data === 'object' ? res.data : res;
+          const isMaint = Boolean(dataObj.maintenance_mode);
+          setIsMaintenanceMode(isMaint);
+          setMaintenanceData(dataObj);
         }
       } catch (err) {
         console.warn('Maintenance status check fallback:', err.message);
@@ -92,7 +94,7 @@ export default function App() {
     };
 
     checkMaintenanceStatus();
-    const interval = setInterval(checkMaintenanceStatus, 15000); // Sync every 15s
+    const interval = setInterval(checkMaintenanceStatus, 5000); // Fast sync every 5s
 
     return () => {
       isMounted = false;

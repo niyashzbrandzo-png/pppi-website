@@ -8,8 +8,11 @@ const REMOTE_FALLBACK_URL = import.meta.env.VITE_API_BASE_URL || 'https://api.pp
 
 async function request(endpoint, options = {}) {
   const config = {
+    cache: 'no-store',
     headers: {
       'Content-Type': 'application/json',
+      'Cache-Control': 'no-cache, no-store, must-revalidate',
+      'Pragma': 'no-cache',
       ...options.headers,
     },
     ...options,
@@ -112,7 +115,7 @@ export const apiService = {
   },
 
   fetchMaintenanceStatus: async () => {
-    return request('/settings/maintenance', { method: 'GET' });
+    return request(`/settings/maintenance?_t=${Date.now()}`, { method: 'GET' });
   },
 };
 
