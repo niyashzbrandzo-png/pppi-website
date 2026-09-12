@@ -43,7 +43,7 @@ export default function ManifestoSection({ setActivePage }) {
             15 Core Pledges for <span className="gradient-text">Peace, Prosperity & Power</span>
           </h2>
           <p className="section-subtitle">
-            Our comprehensive, actionable legislative charter formulated by National President Dr. Pasha Pasha and the National Executive Committee.
+            Our comprehensive, actionable legislative charter formulated by Founder & National President Mr. B S Vahid Pasha and the National Executive Committee.
           </p>
         </div>
 

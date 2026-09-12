@@ -128,7 +128,7 @@ export default function Footer({ setActivePage, openDonationModal }) {
                   bpasha46@gmail.com
                 </span>
                 <span style={{ fontSize: '0.75rem', color: '#64748B', marginTop: '0.2rem', display: 'block' }}>
-                  #138/B, Trendcity, Hosur - 635103, TN
+                  Dalasanur - 563126, Srinivaspur Taluk, Kolar District, Karnataka
                 </span>
               </div>
             </div>

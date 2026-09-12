@@ -36,7 +36,7 @@ export default function FounderPage({ setActivePage }) {
               THE <span className="gradient-text">PREAMBLE</span>
             </h2>
             <p className="section-subtitle">
-              Pasha People Party of India — Founded by Dr. B. Pasha (Dr. Pasha Pasha)
+              Pasha People Party of India — Founded by Mr. B S Vahid Pasha
             </p>
           </div>
 

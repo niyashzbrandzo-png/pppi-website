@@ -8,12 +8,12 @@ export default function MaintenanceScreen({ maintenanceData }) {
   const subtext = maintenanceData?.maintenance_subtext || 'Our mobile app and web services will be fully operational shortly.';
   const helpline = maintenanceData?.helpline || maintenanceData?.contact_helpline || siteMetadata.helpline || '+91 7259798393';
   const email = maintenanceData?.email || maintenanceData?.contact_email || siteMetadata.contactEmail || 'bpasha46@gmail.com';
-  const address = siteMetadata.headquarters || '#138/B, Trendcity, Hosur - 635103, Tamil Nadu';
+  const address = siteMetadata.headquarters || 'Dalasanur-563126, Srinivaspur Taluk, Kolar District, Karnataka State, India';
 
   const officialBanner = {
     id: 'horizontal-banner',
     title: 'Pasha People Party of India — Official Party Banner',
-    subtitle: 'For Peace, Prosperity and Power • Vote for Pineapple • Hosur Central Secretariat',
+    subtitle: 'For Peace, Prosperity and Power • Vote for Pineapple • Dalasanur Central Secretariat',
     src: '/images/maintenance/pppi_horizontal_banner.jpg',
     alt: 'Pasha People Party of India Official Banner'
   };

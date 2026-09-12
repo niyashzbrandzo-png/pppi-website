@@ -45,7 +45,7 @@ export default function AboutSection({ setActivePage }) {
             </h2>
 
             <p style={{ color: 'var(--text-secondary)', marginBottom: '1.25rem', fontSize: '1.02rem', lineHeight: '1.7' }}>
-              Founded by <strong>Dr. B. Pasha (Dr. Pasha Pasha)</strong> with headquarters in <strong>Hosur, Tamil Nadu</strong>, the Pasha People Party of India (PPPI) is built on a sacred commitment: to unite people through love, protect human dignity, eradicate corruption, and empower every citizen through digital transparency.
+              Founded by <strong>Mr. B S Vahid Pasha</strong> with headquarters in <strong>Dalasanur, Srinivaspur Taluk, Kolar District, Karnataka</strong>, the Pasha People Party of India (PPPI) is built on a sacred commitment: to unite people through love, protect human dignity, eradicate corruption, and empower every citizen through digital transparency.
             </p>
 
             <div className="form-row-2col" style={{ marginBottom: '1.75rem' }}>
@@ -88,7 +88,7 @@ export default function AboutSection({ setActivePage }) {
               <button
                 className="btn btn-primary"
                 onClick={() => { setActivePage('founder'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                aria-label="Read Dr. Pasha's Official Preamble"
+                aria-label="Read Mr. B S Vahid Pasha's Official Preamble"
               >
                 <i className="fa-solid fa-scroll"></i> Read Official Preamble
               </button>

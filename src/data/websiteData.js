@@ -10,7 +10,7 @@ export const siteMetadata = {
   slogan: 'For Peace, Prosperity and Power',
   electionSymbol: 'Pineapple (Vote for Pineapple)',
   establishmentYear: 2024,
-  headquarters: '#138/B, Trendcity, Hosur - 635103, Tamil Nadu, India',
+  headquarters: 'Dalasanur-563126, Srinivaspur Taluk, Kolar District, Karnataka State, India',
   helpline: '+91 7259798393',
   contactEmail: 'bpasha46@gmail.com',
   supportEmail: 'contact@pppiconnect.com',
@@ -27,12 +27,12 @@ export const statsData = [
 ];
 
 export const founderData = {
-  name: 'Dr. B. Pasha (Dr. Pasha Pasha)',
-  shortName: 'Dr. Pasha Pasha',
+  name: 'Mr. B S Vahid Pasha',
+  shortName: 'Mr. B S Vahid Pasha',
   designation: 'Founder & National President',
   quote: '"The universal integration and peace must be established by love and affection, but not by war. Seeding brotherhood between all religions and among all people beyond borders ought to become everyone\'s motto."',
   portrait: '/images/gallery/pppi_gallery_presidential_office.jpg',
-  bio: `Dr. B. Pasha is the visionary Founder and National President of the Pasha People Party of India (PPPI), pioneering a nationwide political ecosystem rooted in peace, ethical governance, and public welfare. Operating from the Central Headquarters in Hosur, Tamil Nadu, Dr. Pasha established PPPI to champion universal human brotherhood, complete transparency, and grassroots empowerment.`,
+  bio: `Mr. B S Vahid Pasha is the visionary Founder and National President of the Pasha People Party of India (PPPI), pioneering a nationwide political ecosystem rooted in peace, ethical governance, and public welfare. Operating from Dalasanur, Srinivaspur Taluk, Kolar District, Karnataka, Mr. Pasha established PPPI to champion universal human brotherhood, complete transparency, and grassroots empowerment.`,
   preamble: {
     title: 'Official Preamble & Philosophical Vision',
     fundamentalRight: 'Each living being has a right to live on this earth unless it causes harm to someone or others. Beyond the mere survival of the fittest and struggle for existence, it is the sacred responsibility of each and every one to protect the peace and the prosperity of the planet for offspring as a whole. Hence, unity and peace must be established on earth as our ultimate destination.',
@@ -49,7 +49,7 @@ export const founderData = {
   socials: {
     linkedin: 'https://linkedin.com',
     facebook: 'https://facebook.com',
-    twitter: 'https://twitter.com/drpashapasha',
+    twitter: 'https://twitter.com/bsvahidpasha',
     instagram: 'https://instagram.com',
     email: 'bpasha46@gmail.com',
     phone: '+917259798393',
@@ -59,7 +59,7 @@ export const founderData = {
 export const leadershipTeam = [
   {
     id: 1,
-    name: 'Dr. Pasha Pasha',
+    name: 'Mr. B S Vahid Pasha',
     role: 'National President',
     category: 'National Executive',
     image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80',
@@ -369,7 +369,7 @@ export const eventsData = [
     time: '10:00 AM - 05:00 PM IST',
     venue: 'Indira Gandhi Arena, New Delhi',
     image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80',
-    desc: 'Grand national gathering of 10,000+ members and district leaders to unveil the 15-Point Digital Governance Manifesto with Presidential Address by Dr. Pasha Pasha.',
+    desc: 'Grand national gathering of 10,000+ members and district leaders to unveil the 15-Point Digital Governance Manifesto with Presidential Address by Mr. B S Vahid Pasha.',
   },
   {
     id: 2,
@@ -403,7 +403,7 @@ export const newsData = [
     date: 'August 20, 2026',
     author: 'National Executive Bureau',
     image: 'https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=800&q=80',
-    summary: 'Dr. Pasha Pasha presents 15 revolutionary legislative pledges covering employment for PhD scholars, 8-hour workday limits, collateral-free loans, rural liquor bans, and 90-day time-bound justice.',
+    summary: 'Mr. B S Vahid Pasha presents 15 revolutionary legislative pledges covering employment for PhD scholars, 8-hour workday limits, collateral-free loans, rural liquor bans, and 90-day time-bound justice.',
   },
   {
     id: 2,
@@ -416,7 +416,7 @@ export const newsData = [
   },
   {
     id: 3,
-    title: 'National President Dr. Pasha Pasha Demands 90-Day Judicial Clearance Statutory Act',
+    title: 'National President Mr. B S Vahid Pasha Demands 90-Day Judicial Clearance Statutory Act',
     category: 'Policy Brief',
     date: 'July 28, 2026',
     author: 'Legal & Constitutional Cell',
@@ -428,10 +428,10 @@ export const newsData = [
 export const galleryData = [
   {
     id: 1,
-    title: 'Dr. Pasha Pasha & Leadership Team in Central Office',
+    title: 'Mr. B S Vahid Pasha & Leadership Team in Central Office',
     category: 'Meetings',
     image: '/images/gallery/pppi_gallery_presidential_office.jpg',
-    description: 'Founder & National President Dr. Pasha Pasha with senior party executives and legal advisors at the Central Secretariat office.',
+    description: 'Founder & National President Mr. B S Vahid Pasha with senior party executives and legal advisors at the Central Secretariat office.',
   },
   {
     id: 2,

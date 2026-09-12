@@ -11,10 +11,10 @@ export default function FounderSection({ setActivePage }) {
             <span>FOUNDER & NATIONAL PRESIDENT</span>
           </div>
           <h2 className="section-title">
-            Dr. B. Pasha's <span className="gradient-text">Vision & Preamble</span>
+            Mr. B S Vahid Pasha's <span className="gradient-text">Vision & Preamble</span>
           </h2>
           <p className="section-subtitle">
-            Pioneering peace, universal brotherhood, ethical governance, and grassroots empowerment across India from Hosur, Tamil Nadu.
+            Pioneering peace, universal brotherhood, ethical governance, and grassroots empowerment across India from Dalasanur, Srinivaspur Taluk, Kolar District, Karnataka.
           </p>
         </div>
 
@@ -24,7 +24,7 @@ export default function FounderSection({ setActivePage }) {
             <div className="founder-image-wrap">
               <img
                 src={founderData.portrait}
-                alt="Dr. B. Pasha (Dr. Pasha Pasha) - Founder & National President of Pasha People Party of India"
+                alt="Mr. B S Vahid Pasha - Founder & National President of Pasha People Party of India"
                 loading="lazy"
                 decoding="async"
                 width="800"
@@ -34,7 +34,7 @@ export default function FounderSection({ setActivePage }) {
               <div style={{ position: 'absolute', bottom: '1.5rem', left: '1.5rem', background: 'rgba(15, 23, 42, 0.9)', backdropFilter: 'blur(8px)', color: '#FFFFFF', padding: '0.85rem 1.25rem', borderRadius: 'var(--border-radius-sm)', border: '1px solid rgba(255, 153, 51, 0.4)' }}>
                 <div style={{ fontWeight: 800, fontSize: '1.15rem', color: '#FF9933' }}>{founderData.name}</div>
                 <div style={{ fontSize: '0.82rem', opacity: 0.9 }}>{founderData.designation}</div>
-                <div style={{ fontSize: '0.75rem', color: '#38BDF8', marginTop: '0.2rem' }}>Hosur, Tamil Nadu, India</div>
+                <div style={{ fontSize: '0.75rem', color: '#38BDF8', marginTop: '0.2rem' }}>Dalasanur, Srinivaspur, Kolar, Karnataka</div>
               </div>
             </div>
 
@@ -80,12 +80,12 @@ export default function FounderSection({ setActivePage }) {
 
               {/* Social Links & Contact CTA */}
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '1.5rem', flexWrap: 'wrap', gap: '1rem' }}>
-                <div style={{ display: 'flex', gap: '0.75rem' }} aria-label="Dr. Pasha Social Channels">
+                <div style={{ display: 'flex', gap: '0.75rem' }} aria-label="Mr. B S Vahid Pasha Social Channels">
                   <a
                     href="mailto:bpasha46@gmail.com"
                     className="btn btn-secondary btn-sm"
                     style={{ width: '40px', height: '40px', padding: 0, borderRadius: '50%' }}
-                    aria-label="Email Dr. Pasha"
+                    aria-label="Email Mr. B S Vahid Pasha"
                   >
                     <i className="fa-solid fa-envelope" aria-hidden="true"></i>
                   </a>
@@ -93,7 +93,7 @@ export default function FounderSection({ setActivePage }) {
                     href="tel:+917259798393"
                     className="btn btn-secondary btn-sm"
                     style={{ width: '40px', height: '40px', padding: 0, borderRadius: '50%' }}
-                    aria-label="Call Dr. Pasha"
+                    aria-label="Call Mr. B S Vahid Pasha"
                   >
                     <i className="fa-solid fa-phone" aria-hidden="true"></i>
                   </a>
@@ -103,7 +103,7 @@ export default function FounderSection({ setActivePage }) {
                     rel="noopener noreferrer"
                     className="btn btn-secondary btn-sm"
                     style={{ width: '40px', height: '40px', padding: 0, borderRadius: '50%' }}
-                    aria-label="Dr. Pasha Twitter"
+                    aria-label="Mr. B S Vahid Pasha Twitter"
                   >
                     <i className="fa-brands fa-twitter" aria-hidden="true"></i>
                   </a>
@@ -113,7 +113,7 @@ export default function FounderSection({ setActivePage }) {
                     rel="noopener noreferrer"
                     className="btn btn-secondary btn-sm"
                     style={{ width: '40px', height: '40px', padding: 0, borderRadius: '50%' }}
-                    aria-label="Dr. Pasha Facebook"
+                    aria-label="Mr. B S Vahid Pasha Facebook"
                   >
                     <i className="fa-brands fa-facebook-f" aria-hidden="true"></i>
                   </a>
