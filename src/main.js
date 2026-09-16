@@ -14,6 +14,7 @@ import { renderLawScreen, setupLawListeners, DEFAULT_LEGAL_CASES } from './lawSc
 import { renderMarriageScreen, setupMarriageListeners, DEFAULT_MARRIAGE_APPLICATIONS } from './marriageScreen.js';
 import { renderEmergencyScreen, setupEmergencyListeners, DEFAULT_EMERGENCY_ALERTS } from './emergencyScreen.js';
 import { renderElectionsScreen, setupElectionsListeners, DEFAULT_ELECTIONS } from './electionsScreen.js';
+import { renderOthersScreen, setupOthersListeners } from './othersScreen.js';
 
 // 3 Exact Menu Rows matching Image 2
 const MENU_ROWS = [
@@ -228,6 +229,13 @@ let emergencyState = {
   gpsCoords: null
 };
 
+
+
+let othersState = {
+  selectedCategory: 'website',
+  lastSubmitted: null,
+  isLoading: false
+};
 
 let electionsState = {
   elections: [...DEFAULT_ELECTIONS],
@@ -613,6 +621,8 @@ function renderApp() {
     ? renderEmergencyScreen(emergencyState)
     : activePageId === 'elections'
     ? renderElectionsScreen(electionsState)
+    : activePageId === 'other'
+    ? renderOthersScreen(othersState)
     : renderStandardPage(currentItem)
 }
     </div>
@@ -2290,6 +2300,16 @@ function attachEventListeners() {
   if (activePageId === 'elections') {
     setupElectionsListeners({
       electionsState,
+      renderApp,
+      LOCAL_API_URL,
+      API_BASE_URL
+    });
+  }
+
+  // Others screen event listeners
+  if (activePageId === 'other') {
+    setupOthersListeners({
+      othersState,
       renderApp,
       LOCAL_API_URL,
       API_BASE_URL
