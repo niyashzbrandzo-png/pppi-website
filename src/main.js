@@ -1,4 +1,4 @@
-﻿import './style.css';
+import './style.css';
 import { renderHomeScreen } from './homeScreen.js';
 import { renderAboutScreen } from './aboutScreen.js';
 import { renderFounderScreen } from './founderScreen.js';
@@ -1500,15 +1500,35 @@ function attachEventListeners() {
   const photoInput = document.getElementById('profile-image-input');
   if (photoTrigger && photoInput) {
     photoTrigger.addEventListener('click', () => photoInput.click());
-    photoInput.addEventListener('change', (e) => {
+    photoInput.addEventListener('change', async (e) => {
       const file = e.target.files?.[0];
       if (file) {
+        // Immediate preview
         const reader = new FileReader();
         reader.onload = (event) => {
           profileFormData.profile_image = event.target.result;
           renderApp();
         };
         reader.readAsDataURL(file);
+
+        // Upload to Cloudinary
+        try {
+          const formData = new FormData();
+          formData.append('file', file);
+          formData.append('folder', 'users');
+
+          const uploadRes = await fetch(`${API_BASE_URL}/upload`, {
+            method: 'POST',
+            body: formData,
+          });
+          const uploadData = await uploadRes.json();
+          const cloudUrl = uploadData.data?.url || uploadData.url;
+          if (cloudUrl) {
+            profileFormData.profile_image = cloudUrl;
+          }
+        } catch (uploadErr) {
+          console.warn('Profile image upload note:', uploadErr);
+        }
       }
     });
   }
