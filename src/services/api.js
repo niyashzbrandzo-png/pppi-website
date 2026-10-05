@@ -76,6 +76,11 @@ export const apiService = {
     return request('/posts', { method: 'GET' });
   },
 
+  // Newsletters & Press Meets
+  fetchNewsletters: async () => {
+    return request('/newsletters', { method: 'GET' });
+  },
+
   // Donations
   submitDonation: async (donationData) => {
     return request('/donations', {
